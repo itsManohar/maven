@@ -37,6 +37,7 @@ pipeline {
 				    }
 				}
 				aborted {
+					sh "echo 'NEXUS JOB aborted '"
 				}
 				unstable {
 				    script{
