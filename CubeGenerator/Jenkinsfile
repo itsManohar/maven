@@ -8,6 +8,7 @@ pipeline {
 			stage('Build'){
 				steps{
 					sh script: 'mvn  -f CubeGenerator/pom.xml clean package'
+					return
 				}
 			}
 			stage('Upload to NEXUS'){
@@ -24,7 +25,7 @@ pipeline {
 						protocol: 'http', 
 						repository: 'simpleapp-release', 
 						version: '1.0-SNAPSHORT'
-					
+					return
 					
 				}
 			}
