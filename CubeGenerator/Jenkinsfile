@@ -1,5 +1,4 @@
 pipeline {
-	try {
 	agent any
 	tools {
 		maven 'mvn3'
@@ -28,8 +27,5 @@ pipeline {
 				}
 			}
 		}
-	} catch (e) {
-	     currentBuild.result = "FAILED"
-	     throw e
-  	  } 
+
 }
