@@ -23,7 +23,7 @@ pipeline {
 					nexusVersion: 'nexus3', 
 					protocol: 'http', 
 					repository: 'simpleapp-release', 
-					version: '1.0-2'
+					version: '1.0-SNAPSHORT'
 			}
 			post{
 				success {
