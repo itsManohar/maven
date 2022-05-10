@@ -27,6 +27,7 @@ pipeline {
 			}
 			post{
 				success {
+					sh "echo 'Uploaded jar file to NEXUS'"
 				}
 				failure {
 				    script{
