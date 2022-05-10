@@ -19,7 +19,7 @@ pipeline {
 					type: 'jar']], 
 					credentialsId: '91e0f520-012d-4fea-ba3a-5cf234aeb32d', 
 					groupId: 'com.javatpoint', 
-					nexusUrl: 'localhost:8081', 
+					nexusUrl: 'localhost:8081/#browse/browse:simpleapp-release', 
 					nexusVersion: 'nexus2', 
 					protocol: 'http', 
 					repository: 'simpleapp-release', 
