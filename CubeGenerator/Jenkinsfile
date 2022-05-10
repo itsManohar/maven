@@ -1,9 +1,10 @@
 pipeline {
-agent any
+
+   try {
+   agent any
 	tools {
 		maven 'mvn3'
 	}
-   try {
       stages{
 			stage('Build'){
 				steps{
