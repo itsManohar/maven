@@ -15,7 +15,7 @@ pipeline {
 				nexusArtifactUploader artifacts: [[
 					artifactId: 'CubeGenerator', 
 					classifier: '', 
-					file: 'target/CubeGenerator-1.0-SNAPSHOT.jar', 
+					file: 'CubeGenerator/target/CubeGenerator-1.0-SNAPSHOT.jar', 
 					type: 'jar']], 
 					credentialsId: '91e0f520-012d-4fea-ba3a-5cf234aeb32d', 
 					groupId: 'com.javatpoint', 
