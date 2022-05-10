@@ -10,5 +10,11 @@ pipeline {
 			}
 
 		}
+		stage('Upload to NEXUS'){
+			steps{
+				nexusArtifactUploader artifacts: [[artifactId: 'CubeGenerator', classifier: '', file: 'target/CubeGenerator-1.0-SNAPSHOT.jar', type: 'jar']], credentialsId: '91e0f520-012d-4fea-ba3a-5cf234aeb32d', groupId: 'com.javatpoint', nexusUrl: 'localhost', nexusVersion: 'nexus2', protocol: 'http', repository: 'http://localhost:8081/repository/simpleapp-release/', version: '1.0-SNAPSHOT'
+			}
+
+		}
 	}
 }
