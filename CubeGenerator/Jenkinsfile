@@ -19,14 +19,13 @@ pipeline {
 						type: 'jar']], 
 						credentialsId: '91e0f520-012d-4fea-ba3a-5cf234aeb32d', 
 						groupId: 'com.javatpoint', 
-						nexusUrl: 'localhostsdf', 
+						nexusUrl: 'localhost', 
 						nexusVersion: 'nexus3', 
 						protocol: 'http', 
 						repository: 'simpleapp-release', 
 						version: '1.0-SNAPSHORT'
 					
-					currentBuild.result = 'ABORTED'
-        				error("Aborting the build.")
+					
 				}
 			}
 		}
