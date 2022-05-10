@@ -3,51 +3,32 @@ pipeline {
 	tools {
 		maven 'mvn3'
 	}
-	stages{
-		stage('Build'){
-			steps{
-				sh script: 'mvn  -f CubeGenerator/pom.xml clean package'
+	try {
+		stages{
+			stage('Build'){
+				steps{
+					sh script: 'mvn  -f CubeGenerator/pom.xml clean package'
+				}
 			}
-
-		}
-		stage('Upload to NEXUS'){
-			steps{
-				nexusArtifactUploader artifacts: [[
-					artifactId: 'CubeGenerator', 
-					classifier: '', 
-					file: 'CubeGenerator/target/CubeGenerator-1.0-SNAPSHOT.jar', 
-					type: 'jar']], 
-					credentialsId: '91e0f520-012d-4fea-ba3a-5cf234aeb32d', 
-					groupId: 'com.javatpoint', 
-					nexusUrl: 'localhostsdf', 
-					nexusVersion: 'nexus3', 
-					protocol: 'http', 
-					repository: 'simpleapp-release', 
-					version: '1.0-SNAPSHORT'
+			stage('Upload to NEXUS'){
+				steps{
+					nexusArtifactUploader artifacts: [[
+						artifactId: 'CubeGenerator', 
+						classifier: '', 
+						file: 'CubeGenerator/target/CubeGenerator-1.0-SNAPSHOT.jar', 
+						type: 'jar']], 
+						credentialsId: '91e0f520-012d-4fea-ba3a-5cf234aeb32d', 
+						groupId: 'com.javatpoint', 
+						nexusUrl: 'localhostsdf', 
+						nexusVersion: 'nexus3', 
+						protocol: 'http', 
+						repository: 'simpleapp-release', 
+						version: '1.0-SNAPSHORT'
+				}
 			}
-			post{
-				success {
-					sh "echo 'Uploaded jar file to NEXUS'"
-				}
-				failure {
-				    script{
-					sh "exit 1"
-					//or
-					error "Failed, exiting now..."
-				    }
-				}
-				aborted {
-					sh "echo 'NEXUS JOB aborted '"
-				}
-				unstable {
-				    script{
-					   sh "exit 1"
-					  //or
-					  error "Unstable, exiting now..."                    
-				     }
-				}
-			    }
-
 		}
-	}
+	} catch (e) {
+	     currentBuild.result = "FAILED"
+	     throw e
+  	  } 
 }
