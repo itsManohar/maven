@@ -25,6 +25,26 @@ pipeline {
 					repository: 'simpleapp-release', 
 					version: '1.0-2'
 			}
+			post{
+				success {
+				}
+				failure {
+				    script{
+					sh "exit 1"
+					//or
+					error "Failed, exiting now..."
+				    }
+				}
+				aborted {
+				}
+				unstable {
+				    script{
+					   sh "exit 1"
+					  //or
+					  error "Unstable, exiting now..."                    
+				     }
+				}
+			    }
 
 		}
 	}
