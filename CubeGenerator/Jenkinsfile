@@ -40,9 +40,10 @@ pipeline {
 		                expression { select == '1'}
 		            }
 		            steps {
-		                echo "Hello, Choice 1!"
-				    echo "branch is = env.BRANCH_NAME"
-				    echo "branch2 is = BRANCH_NAME"
+		                echo "Hello, Choice 1! "
+				    
+				    sh 'printenv'
+
 		            }
 		    }
 		    stage ('2 choice') {
