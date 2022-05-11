@@ -1,15 +1,11 @@
 def skipRemainingStages = false
-def select = '2'
 
 
-options {
-    buildDiscarder(logRotator(numToKeepStr:'1'))
-    disableConcurrentBuilds()
-}
 
 pipeline {
    agent any
 	
+	properties([parameters([string(defaultValue: '2', name: 'select')])])
 	
 	tools {
 		maven 'mvn3'
