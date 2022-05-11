@@ -6,29 +6,6 @@ pipeline {
 		maven 'mvn3'
 	}
       stages{
-			stage('Build'){
-				steps{
-					sh script: 'mvn  -f CubeGenerator/pom.xml clean package'
-					
-				}
-			}
-			stage('Upload to NEXUS'){
-				steps{
-					nexusArtifactUploader artifacts: [[
-						artifactId: 'CubeGenerator', 
-						classifier: '', 
-						file: 'CubeGenerator/target/CubeGenerator-1.0-SNAPSHOT.jar', 
-						type: 'jar']], 
-						credentialsId: '91e0f520-012d-4fea-ba3a-5cf234aeb32d', 
-						groupId: 'com.javatpoint', 
-						nexusUrl: 'localhost:8081', 
-						nexusVersion: 'nexus3', 
-						protocol: 'http', 
-						repository: 'simpleapp-release', 
-						version: '1.0-4'
-					
-				}
-			}
 			stage("Stage 1") {
             steps {
 					script {
@@ -38,7 +15,6 @@ pipeline {
 					}
 		    	}
 			}
-
 			stage("Stage 2") {
 			    when {
 					expression {
@@ -53,18 +29,31 @@ pipeline {
 			    }
 			}
 
-			stage("Stage 3") {
-			    when {
-					expression {
-					    !skipRemainingStages
-					}
-			    }
+			stage ('1 choice') {
+		      when {
+		                expression { choice == '1'}
+		            }
+		            steps {
+		                echo "Hello, Choice 1!"
+		            }
+		    }
+		    stage ('2 choice') {
+		      when {
+		                expression { choice == '2'}
+		            }
+		            steps {
+		                echo "Hello, Choice 2!"
+		            }
+		    }
+		   stage ('3 choice') {
+		      when {
+		                expression { choice == '3'}
+		            }
+		            steps {
+		                echo "Hello, Choice 3!"
+		            }
+		        }
 
-			    steps {
-					script {
-					    println "This text wont show up...."
-					}
-			    }
-			}
+			
 		}
 } 
