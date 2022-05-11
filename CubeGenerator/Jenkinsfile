@@ -1,6 +1,4 @@
 pipeline {
-
-
    agent any
 	tools {
 		maven 'mvn3'
@@ -28,6 +26,11 @@ pipeline {
 						version: '1.0-4'
 					
 				}
+			}
+			stage('My Conditional Stage') {
+		    when (BRANCH_NAME != 'master') {
+		        echo 'ITs not a master branch.'
+    			}
 			}
 		}
 } 
