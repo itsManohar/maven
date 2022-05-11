@@ -42,7 +42,7 @@ pipeline {
 		            steps {
 		                echo "Hello, Choice 1! "
 				    
-				    sh 'printenv'. // Print the all environment variables 
+				    sh 'printenv' // Print the all environment variables 
 
 		            }
 		    }
