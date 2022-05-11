@@ -1,4 +1,5 @@
 def skipRemainingStages = false
+def choice = 2
 
 pipeline {
    agent any
