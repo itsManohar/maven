@@ -1,12 +1,8 @@
 def skipRemainingStages = false
 def choice = 2
-properties([
-		parameters([
-			choice(choices: ['1', '2', '3'], 
-			       name: 'select'
-			      )
-		])
-	])
+
+properties([parameters([choice(choices: '1\2', name: 'select')])])
+
 
 pipeline {
    agent any
