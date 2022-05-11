@@ -41,6 +41,8 @@ pipeline {
 		            }
 		            steps {
 		                echo "Hello, Choice 1!"
+				    echo "branch is = env.BRANCH_NAME"
+				    echo "branch2 is = BRANCH_NAME"
 		            }
 		    }
 		    stage ('2 choice') {
