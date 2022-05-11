@@ -3,13 +3,7 @@ def choice = 2
 
 pipeline {
    agent any
-//	options([parameters([choice(choices: ['1', '2', '3'], description: 'choice perameter', name: 'choice')])])
-	 parameters {
-       
-
-        choice(choices: ['1', '2', '3'], description: 'choice perameter', name: 'choice')
-
-    }
+	properties([parameters([choice(choices: ['1', '2', '3'], name: 'select')])])
 	
 	tools {
 		maven 'mvn3'
@@ -40,7 +34,7 @@ pipeline {
 
 			stage ('1 choice') {
 		      when {
-		                expression { choice == '1'}
+		                expression { select == '1'}
 		            }
 		            steps {
 		                echo "Hello, Choice 1!"
@@ -48,7 +42,7 @@ pipeline {
 		    }
 		    stage ('2 choice') {
 		      when {
-		                expression { choice == '2'}
+		                expression { select == '2'}
 		            }
 		            steps {
 		                echo "Hello, Choice 2!"
@@ -56,7 +50,7 @@ pipeline {
 		    }
 		   stage ('3 choice') {
 		      when {
-		                expression { choice == '3'}
+		                expression { select == '3'}
 		            }
 		            steps {
 		                echo "Hello, Choice 3!"
