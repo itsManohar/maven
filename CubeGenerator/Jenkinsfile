@@ -42,7 +42,7 @@ pipeline {
 		            steps {
 		                echo "Hello, Choice 1! "
 				    
-				    sh 'printenv'
+				    sh 'printenv'. // Print the all environment variables 
 
 		            }
 		    }
@@ -52,7 +52,7 @@ pipeline {
 		            }
 		            steps {
 		                echo "Hello, Choice 2!"
-				echo "CURRENT BRANCH IS = $BRANCH_NAME"
+				echo "CURRENT BRANCH IS = $BRANCH_NAME" // get the branch_name
 		            }
 		    }
 		   stage ('3 choice') {
