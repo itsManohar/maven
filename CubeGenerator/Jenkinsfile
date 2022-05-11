@@ -1,15 +1,16 @@
 def skipRemainingStages = false
 def choice = 2
-
-pipeline {
-   agent any
-	options([
+properties([
 		parameters([
 			choice(choices: ['1', '2', '3'], 
 			       name: 'select'
 			      )
 		])
 	])
+
+pipeline {
+   agent any
+	
 	
 	tools {
 		maven 'mvn3'
