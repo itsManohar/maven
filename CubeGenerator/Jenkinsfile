@@ -3,7 +3,7 @@ def choice = 2
 
 pipeline {
    agent any
-	properties([parameters([choice(choices: ['1', '2', '3'], description: 'choice perameter', name: 'choice')])])
+	options([parameters([choice(choices: ['1', '2', '3'], description: 'choice perameter', name: 'choice')])])
 	
 	
 	tools {
