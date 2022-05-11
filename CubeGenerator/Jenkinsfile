@@ -52,6 +52,7 @@ pipeline {
 		            }
 		            steps {
 		                echo "Hello, Choice 2!"
+				echo "CURRENT BRANCH IS = $BRANCH_NAME"
 		            }
 		    }
 		   stage ('3 choice') {
