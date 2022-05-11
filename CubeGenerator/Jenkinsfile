@@ -5,7 +5,7 @@ def skipRemainingStages = false
 pipeline {
    agent any
 	
-	properties([parameters([string(defaultValue: '2', name: 'select')])])
+	options([parameters([string(defaultValue: '2', name: 'select')])])
 	
 	tools {
 		maven 'mvn3'
