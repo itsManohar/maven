@@ -6,7 +6,7 @@ pipeline {
 		maven 'mvn3'
 	}
       stages{
-			stage('Build'){
+			stage('Building maven'){
 				steps{
 					sh script: 'mvn  -f CubeGenerator/pom.xml clean package'
 					
